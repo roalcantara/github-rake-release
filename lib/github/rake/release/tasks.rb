@@ -51,6 +51,7 @@ module Github
             desc 'Merges the develop branch into master and creates a release tag on github'
             task :release, [:version, :title, :body] => ['github:auth', :merge] do |_, args|
               begin
+                puts "Creating `#{args.version}` release tag at `#{Github::Rake::Release.config.respository}`.."
                 Octokit.create_release(
                   Github::Rake::Release.config.respository,
                   args.version,
