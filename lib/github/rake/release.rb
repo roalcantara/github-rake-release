@@ -1,4 +1,4 @@
-require "github/rake/release/version"
+require 'github/rake/release/version'
 
 module Github
   module Rake

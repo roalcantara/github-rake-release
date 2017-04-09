@@ -7,7 +7,7 @@ Rake Tasks for Automating Github Releases
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "github-rake-release"
+gem 'github-rake-release'
 ```
 
 And then execute:
