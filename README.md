@@ -58,7 +58,7 @@ And, then, authenticate on Github running:
 
     $ bundle exec rake github:auth
 
-#### 4. Merges the develop* branch into master:
+#### 4. Merges the develop<sup name="branch-name-customisation">[1](#branch-name-customisation-reference)</sup> branch into master:
 
 Running:
 
@@ -72,7 +72,7 @@ Will simply run:
     $ git merge origin/develop
     $ git push
 
-> see configuration to customise the branch name. 😉
+> <a name="branch-name-customisation-reference">[1]</a> see configuration to customise the branch name. [↩](#branch-name-customisation)
 
 #### 5. Release
 
