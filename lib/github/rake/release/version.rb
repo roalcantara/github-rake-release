@@ -1,7 +1,7 @@
 module Github
   module Rake
     module Release
-      VERSION = '0.2.1-alpha'.freeze
+      VERSION = '0.2.2-alpha'.freeze
     end
   end
 end
