@@ -58,6 +58,22 @@ And, then, authenticate on Github running:
 
     $ bundle exec rake github:auth
 
+#### 4. Merges the develop* branch into master:
+
+Running:
+
+    $ bundle exec rake github:merge
+
+Will simply run:
+
+    $ git fetch
+    $ git checkout master
+    $ git pull
+    $ git merge origin/develop
+    $ git push
+
+> see configuration to customise the branch name. 😉
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

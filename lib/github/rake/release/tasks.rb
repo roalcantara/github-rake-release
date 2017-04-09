@@ -7,6 +7,7 @@ module Github
       class Tasks < ::Rake::TaskLib
         def initialize
           define_github_auth_task
+          define_github_merge_task
         end
 
         private
@@ -25,6 +26,19 @@ module Github
               rescue => e
                 puts e.message
               end
+            end
+          end
+        end
+
+        def define_github_merge_task
+          namespace :github do
+            desc 'Merges the develop branch into master'
+            task :merge do
+              sh 'git fetch'
+              sh 'git checkout master'
+              sh 'git pull'
+              sh "git merge origin/#{Github::Tasks::Release.config.merge_from}"
+              sh 'git push'
             end
           end
         end
