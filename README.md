@@ -20,7 +20,27 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+#### 1. Rakefile:
+
+```ruby
+require 'github/rake/release'
+```
+
+#### 2. Configuration
+
+The gem try to find out the repository name and assume that the branch to be merged to master is **develop**.
+
+We can customise these values, tho:
+
+```ruby
+# Rakefile
+
+require 'github/rake/release'
+Github::Rake::Release.configure do |config|
+  config.respository = 'http://some.repo.git'
+  config.merge_from = :development
+end
+```
 
 ## Development
 
