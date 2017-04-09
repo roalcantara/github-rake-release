@@ -41,7 +41,7 @@ We can customise these values, tho:
 
 require 'github/rake/release'
 Github::Rake::Release.configure do |config|
-  config.respository = 'http://some.repo.git'
+  config.respository = 'username/repository-name'
   config.merge_from = :development
 end
 ```
