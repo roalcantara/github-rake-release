@@ -7,7 +7,9 @@ Rake Tasks for Automating Github Releases
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'github-rake-release'
+group :development do
+  gem 'github-rake-release'
+end
 ```
 
 And then execute:
@@ -23,7 +25,9 @@ Or install it yourself as:
 #### 1. Rakefile:
 
 ```ruby
-require 'github/rake/release'
+if Rails.env.development?
+  require 'github/rake/release'
+end
 ```
 
 And list all available tasks:
@@ -38,11 +42,12 @@ We can customise these values, tho:
 
 ```ruby
 # Rakefile
-
-require 'github/rake/release'
-Github::Rake::Release.configure do |config|
-  config.respository = 'username/repository-name'
-  config.merge_from = :development
+if Rails.env.development?
+  require 'github/rake/release'
+  Github::Rake::Release.configure do |config|
+    config.respository = 'username/repository-name'
+    config.merge_from = :development
+  end
 end
 ```
 
