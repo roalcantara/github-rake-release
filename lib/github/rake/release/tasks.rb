@@ -38,7 +38,7 @@ module Github
               sh 'git fetch'
               sh 'git checkout master'
               sh 'git pull'
-              sh "git merge origin/#{Github::Tasks::Release.config.merge_from}"
+              sh "git merge origin/#{Github::Rake::Release.config.merge_from}"
               sh 'git push'
             end
           end
@@ -50,7 +50,7 @@ module Github
             task :release, [:version, :title, :body] => ['github:auth', :merge] do |_, args|
               begin
                 Octokit.create_release(
-                  Github::Tasks::Release.config.respository,
+                  Github::Rake::Release.config.respository,
                   args.version,
                   name: args.title,
                   body: args.body,
