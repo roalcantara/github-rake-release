@@ -24,6 +24,7 @@ module Github
 
                 rate_limit = Octokit.rate_limit!
                 puts 'Exceeded limit of the GitHub API request' if rate_limit.remaining.zero?
+                puts 'Github Authentication: OK! 🤘'
               rescue => e
                 puts e.message
               end
