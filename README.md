@@ -74,6 +74,14 @@ Will simply run:
 
 > see configuration to customise the branch name. 😉
 
+#### 5. Release
+
+Running:
+
+    $ bundle exec rake github:release['v0.1.0', 'Release title', 'Release description']
+
+Will run the merge task and create a release tag after merging using the provided parameters. 🚀
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

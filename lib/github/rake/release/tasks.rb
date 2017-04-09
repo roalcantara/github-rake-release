@@ -8,6 +8,7 @@ module Github
         def initialize
           define_github_auth_task
           define_github_merge_task
+          define_github_release_task
         end
 
         private
@@ -39,6 +40,28 @@ module Github
               sh 'git pull'
               sh "git merge origin/#{Github::Tasks::Release.config.merge_from}"
               sh 'git push'
+            end
+          end
+        end
+
+        def define_github_release_task
+          namespace :github do
+            desc 'Merges the develop branch into master and creates a release tag on github'
+            task :release, [:version, :title, :body] => ['github:auth', :merge] do |_, args|
+              begin
+                Octokit.create_release(
+                  Github::Tasks::Release.config.respository,
+                  args.version,
+                  name: args.title,
+                  body: args.body,
+                  target_commitish: :master,
+                  draft: false,
+                  prerelease: false
+                )
+                puts "#{args.version} has been released in the wild! 🚀"
+              rescue => e
+                puts e.message
+              end
             end
           end
         end
