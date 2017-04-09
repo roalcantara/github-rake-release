@@ -10,6 +10,7 @@ module Github
           define_github_merge_task
           define_github_release_task
           define_github_repository_task
+          define_github_branch_to_merge_task
         end
 
         private
@@ -74,6 +75,15 @@ module Github
             desc 'Shows the github repository where the release will be created'
             task :repo do
               puts Github::Rake::Release.config.respository
+            end
+          end
+        end
+
+        def define_github_branch_to_merge_task
+          namespace :github do
+            desc 'Shows branch configured to be merged into master'
+            task :merge_from do
+              puts Github::Rake::Release.config.merge_from
             end
           end
         end
