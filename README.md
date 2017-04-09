@@ -26,6 +26,10 @@ Or install it yourself as:
 require 'github/rake/release'
 ```
 
+And list all available tasks:
+
+    $ bundle exec rake -T
+
 #### 2. Configuration
 
 The gem try to find out the repository name and assume that the branch to be merged to master is **develop**.
@@ -41,6 +45,18 @@ Github::Rake::Release.configure do |config|
   config.merge_from = :development
 end
 ```
+
+#### 3. Github authentication:
+
+Create a [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) selecting the scope **repo** on Github.
+
+Then, export it as:
+
+    $ export GITHUB_ACCESS_TOKEN=your_github_token
+
+And, then, authenticate on Github running:
+
+    $ bundle exec rake github:auth
 
 ## Development
 

@@ -1,5 +1,6 @@
 require 'github/rake/release/version'
 require 'github/rake/release/config'
+require 'github/rake/release/tasks'
 
 module Github
   module Rake
@@ -22,3 +23,5 @@ module Github
     end
   end
 end
+
+Github::Rake::Release::Tasks.new
