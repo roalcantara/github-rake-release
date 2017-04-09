@@ -9,6 +9,7 @@ module Github
           define_github_auth_task
           define_github_merge_task
           define_github_release_task
+          define_github_repository_task
         end
 
         private
@@ -63,6 +64,15 @@ module Github
               rescue => e
                 puts e.message
               end
+            end
+          end
+        end
+
+        def define_github_repository_task
+          namespace :github do
+            desc 'Shows the github repository where the release will be created'
+            task :repo do
+              puts Github::Rake::Release.config.respository
             end
           end
         end
